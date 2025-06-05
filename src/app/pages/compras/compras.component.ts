@@ -56,11 +56,12 @@ export class ComprasComponent {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.comprasService.create(result).subscribe((nuevaCompra) => {
-                    this.dataSource.data = [
-                        ...this.dataSource.data,
-                        nuevaCompra
-                    ];
+                this.comprasService.create(result).subscribe(() => {
+                    this.comprasService.getAll().subscribe((compras) => {
+                        this.comprasService.getAll().subscribe((compras) => {
+                            this.dataSource.data = compras;
+                        });
+                    });
                 });
             }
         });
@@ -74,18 +75,11 @@ export class ComprasComponent {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.comprasService
-                    .update(compra.id!, result)
-                    .subscribe((actualizada) => {
-                        const index = this.dataSource.data.findIndex(
-                            (c) => c === compra
-                        );
-                        if (index !== -1) {
-                            const updatedData = [...this.dataSource.data];
-                            updatedData[index] = actualizada;
-                            this.dataSource.data = updatedData;
-                        }
+                this.comprasService.update(compra.id, result).subscribe(() => {
+                    this.comprasService.getAll().subscribe((compras) => {
+                        this.dataSource.data = compras;
                     });
+                });
             }
         });
     }

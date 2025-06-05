@@ -41,14 +41,11 @@ export class CategoriasComponent {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.categoriaService
-                    .create(result)
-                    .subscribe((nuevaCategoria) => {
-                        this.dataSource.data = [
-                            ...this.dataSource.data,
-                            nuevaCategoria
-                        ];
+                this.categoriaService.create(result).subscribe(() => {
+                    this.categoriaService.getAll().subscribe((categorias) => {
+                        this.dataSource.data = categorias;
                     });
+                });
             }
         });
     }
@@ -63,15 +60,10 @@ export class CategoriasComponent {
             if (result) {
                 this.categoriaService
                     .update(categoria.id, result)
-                    .subscribe((actualizada) => {
-                        const index = this.dataSource.data.findIndex(
-                            (c) => c === categoria
-                        );
-                        if (index !== -1) {
-                            const updatedData = [...this.dataSource.data];
-                            updatedData[index] = actualizada;
-                            this.dataSource.data = updatedData;
-                        }
+                    .subscribe(() => {
+                        this.categoriaService.getAll().subscribe((categorias) => {
+                            this.dataSource.data = categorias;
+                        });
                     });
             }
         });

@@ -42,14 +42,13 @@ export class ProveedoresComponent implements AfterViewInit {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.proveedorService
-                    .create(result)
-                    .subscribe((newProveedor: Proveedor) => {
-                        this.dataSource.data = [
-                            ...this.dataSource.data,
-                            newProveedor
-                        ];
-                    });
+                this.proveedorService.create(result).subscribe(() => {
+                    this.proveedorService
+                        .getAll()
+                        .subscribe((proveedores: Proveedor[]) => {
+                            this.dataSource.data = proveedores;
+                        });
+                });
             }
         });
     }
@@ -64,15 +63,12 @@ export class ProveedoresComponent implements AfterViewInit {
             if (result) {
                 this.proveedorService
                     .update(proveedor.id, result)
-                    .subscribe((updatedProveedor: Proveedor) => {
-                        const index = this.dataSource.data.findIndex(
-                            (p) => p === proveedor
-                        );
-                        if (index !== -1) {
-                            const updatedData = [...this.dataSource.data];
-                            updatedData[index] = updatedProveedor;
-                            this.dataSource.data = updatedData;
-                        }
+                    .subscribe(() => {
+                        this.proveedorService
+                            .getAll()
+                            .subscribe((proveedores: Proveedor[]) => {
+                                this.dataSource.data = proveedores;
+                            });
                     });
             }
         });

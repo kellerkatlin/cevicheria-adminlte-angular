@@ -50,8 +50,10 @@ export class InsumosComponent {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.insumosService.create(result).subscribe((nuevo) => {
-                    this.dataSource.data = [...this.dataSource.data, nuevo];
+                this.insumosService.create(result).subscribe(() => {
+                    this.insumosService.getAll().subscribe((insumos) => {
+                        this.dataSource.data = insumos;
+                    });
                 });
             }
         });
@@ -65,18 +67,11 @@ export class InsumosComponent {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.insumosService
-                    .update(insumo.id, result)
-                    .subscribe((actualizado) => {
-                        const index = this.dataSource.data.findIndex(
-                            (i) => i === insumo
-                        );
-                        if (index !== -1) {
-                            const updatedData = [...this.dataSource.data];
-                            updatedData[index] = actualizado;
-                            this.dataSource.data = updatedData;
-                        }
+                this.insumosService.update(insumo.id, result).subscribe(() => {
+                    this.insumosService.getAll().subscribe((insumos) => {
+                        this.dataSource.data = insumos;
                     });
+                });
             }
         });
     }
