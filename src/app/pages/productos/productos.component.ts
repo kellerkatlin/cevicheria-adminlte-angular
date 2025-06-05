@@ -51,16 +51,10 @@ export class ProductosComponent {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.productoService
-                    .create(result)
-                    .subscribe((nuevoProducto) => {
-                        this.dataSource.data = [
-                            ...this.dataSource.data,
-                            nuevoProducto
-                        ];
+                this.productoService.create(result).subscribe(() => {
+                    this.productoService.getAll().subscribe((productos) => {
+                        this.dataSource.data = productos;
                     });
-                this.productoService.getAll().subscribe((productos) => {
-                    this.dataSource.data = productos;
                 });
             }
         });
