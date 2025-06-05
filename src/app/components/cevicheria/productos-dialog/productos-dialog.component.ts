@@ -13,6 +13,13 @@ export class ProductosDialogComponent implements OnInit {
     readonly data = inject<Producto>(MAT_DIALOG_DATA);
     private readonly categoriaService = inject(CategoriasService);
     categoriaOptions: Categoria[] = [];
+    unidadMedidaOptions = [
+        {value: 'kg', label: 'Kilogramo'},
+        {value: 'g', label: 'Gramo'},
+        {value: 'l', label: 'Litro'},
+        {value: 'ml', label: 'Mililitro'},
+        {value: 'unidad', label: 'Unidad'}
+    ];
 
     ngOnInit(): void {
         this.categoriaService.getAll().subscribe((categorias) => {
@@ -22,6 +29,9 @@ export class ProductosDialogComponent implements OnInit {
 
     onCategoriaChange(id: number) {
         this.data.categoria = {id};
+    }
+    onUnidadMedidaChange(value: string) {
+        this.data.unidadMedida = value;
     }
 
     save() {

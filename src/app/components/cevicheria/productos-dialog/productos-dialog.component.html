@@ -8,7 +8,17 @@
 
     <mat-form-field appearance="outline" class="w-100">
         <mat-label>Unidad de medida</mat-label>
-        <input matInput [(ngModel)]="data.unidadMedida" />
+        <mat-select
+            [value]="data.unidadMedida"
+            (selectionChange)="onUnidadMedidaChange($event.value)"
+        >
+            <mat-option
+                *ngFor="let unidad of unidadMedidaOptions"
+                [value]="unidad.value"
+            >
+                {{ unidad.label }}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100">
