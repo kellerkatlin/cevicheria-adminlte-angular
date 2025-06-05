@@ -14,11 +14,11 @@ export class ProductosDialogComponent implements OnInit {
     private readonly categoriaService = inject(CategoriasService);
     categoriaOptions: Categoria[] = [];
     unidadMedidaOptions = [
-        {value: 'kg', label: 'Kilogramo'},
-        {value: 'g', label: 'Gramo'},
-        {value: 'l', label: 'Litro'},
-        {value: 'ml', label: 'Mililitro'},
-        {value: 'unidad', label: 'Unidad'}
+        {value: 'Kilogramo', label: 'Kilogramo'},
+        {value: 'Gramo', label: 'Gramo'},
+        {value: 'Litro', label: 'Litro'},
+        {value: 'Mililitro', label: 'Mililitro'},
+        {value: 'Unidad', label: 'Unidad'}
     ];
 
     ngOnInit(): void {
