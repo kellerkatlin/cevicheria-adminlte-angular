@@ -63,6 +63,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { ComprasComponent } from './pages/compras/compras.component';
+import { AlmacenComponent } from './pages/almacen/almacen.component';
+import { InsumosComponent } from './pages/insumos/insumos.component';
+import { ProductosComponent } from './pages/productos/productos.component';
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
@@ -100,7 +105,12 @@ registerLocaleData(localeEn, 'en-EN');
         ContentHeaderComponent,
         LoadingComponent,
         OverlayLoadingComponent,
-        ProveedorDialogComponent
+        ProveedorDialogComponent,
+        CategoriasComponent,
+        ComprasComponent,
+        AlmacenComponent,
+        InsumosComponent,
+        ProductosComponent
     ],
     bootstrap: [AppComponent],
     imports: [

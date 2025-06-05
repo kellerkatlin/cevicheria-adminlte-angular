@@ -12,6 +12,11 @@ import {ForgotPasswordComponent} from '@modules/forgot-password/forgot-password.
 import {RecoverPasswordComponent} from '@modules/recover-password/recover-password.component';
 import {SubMenuComponent} from '@pages/main-menu/sub-menu/sub-menu.component';
 import {ProveedoresComponent} from '@pages/proveedores/proveedores.component';
+import {CategoriasComponent} from '@pages/categorias/categorias.component';
+import {InsumosComponent} from '@pages/insumos/insumos.component';
+import {ProductosComponent} from '@pages/productos/productos.component';
+import {ComprasComponent} from '@pages/compras/compras.component';
+import {AlmacenComponent} from '@pages/almacen/almacen.component';
 
 const routes: Routes = [
     {
@@ -27,6 +32,26 @@ const routes: Routes = [
             {
                 path: 'proveedores',
                 component: ProveedoresComponent
+            },
+            {
+                path: 'categorias',
+                component: CategoriasComponent
+            },
+            {
+                path: 'insumos',
+                component: InsumosComponent
+            },
+            {
+                path: 'productos',
+                component: ProductosComponent
+            },
+            {
+                path: 'compras',
+                component: ComprasComponent
+            },
+            {
+                path: 'almacen',
+                component: AlmacenComponent
             }
         ]
     },

@@ -38,7 +38,14 @@ export class ProveedoresComponent implements AfterViewInit {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.dataSource.data = [...this.dataSource.data, result];
+                this.proveedorService
+                    .create(result)
+                    .subscribe((newProveedor: Proveedor) => {
+                        this.dataSource.data = [
+                            ...this.dataSource.data,
+                            newProveedor
+                        ];
+                    });
             }
         });
     }
