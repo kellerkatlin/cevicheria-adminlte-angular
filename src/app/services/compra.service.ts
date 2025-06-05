@@ -8,8 +8,21 @@ export interface Compra {
     fechaCompra: string;
     montoTotal: number;
     precioUnitario: number;
-    producto: {id: number};
-    proveedor: {id: number};
+    producto: {
+        id: number;
+        nombre: string;
+        unidadMedida: string;
+        categoria: {
+            id: number;
+            nombre: string;
+        };
+    };
+
+    proveedor: {
+        id: number;
+        razonSocial: string;
+        nombre: string;
+    };
 }
 
 @Injectable({
