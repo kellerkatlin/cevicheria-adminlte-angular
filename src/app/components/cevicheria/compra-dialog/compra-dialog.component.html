@@ -21,13 +21,27 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100">
-        <mat-label>ID Producto</mat-label>
-        <input matInput type="number" [(ngModel)]="data.producto.id" />
+        <mat-label>Producto</mat-label>
+        <mat-select
+            [value]="data.producto?.id"
+            (selectionChange)="onProductoChange($event.value)"
+        >
+            <mat-option *ngFor="let prod of productosOptions" [value]="prod.id">
+                {{ prod.nombre }}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100">
-        <mat-label>ID Proveedor</mat-label>
-        <input matInput type="number" [(ngModel)]="data.proveedor.id" />
+        <mat-label>Proveedor</mat-label>
+        <mat-select
+            [value]="data.proveedor?.id"
+            (selectionChange)="onProveedorChange($event.value)"
+        >
+            <mat-option *ngFor="let prod of productosOptions" [value]="prod.id">
+                {{ prod.nombre }}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
 </div>
 <div mat-dialog-actions align="end">
