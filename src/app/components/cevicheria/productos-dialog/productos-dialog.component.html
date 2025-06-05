@@ -1,4 +1,5 @@
 <h1 mat-dialog-title>{{ data.id ? 'Editar' : 'Crear' }} Producto</h1>
+
 <div style="padding-top: 16px" mat-dialog-content>
     <mat-form-field appearance="outline" class="w-100">
         <mat-label>Nombre</mat-label>
@@ -12,9 +13,17 @@
 
     <mat-form-field appearance="outline" class="w-100">
         <mat-label>Categoría</mat-label>
-        <input type="number" matInput [(ngModel)]="data.categoria.id" />
+        <mat-select
+            [value]="data.categoria?.id"
+            (selectionChange)="onCategoriaChange($event.value)"
+        >
+            <mat-option *ngFor="let cat of categoriaOptions" [value]="cat.id">
+                {{ cat.nombre }}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
 </div>
+
 <div mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancelar</button>
     <button mat-flat-button color="primary" (click)="save()">Guardar</button>

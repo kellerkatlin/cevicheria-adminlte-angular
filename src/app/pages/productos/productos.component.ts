@@ -7,6 +7,7 @@ import {
     ConfirmDialogData
 } from '@components/cevicheria/confirm-dialog/confirm-dialog.component';
 import {ProductosDialogComponent} from '@components/cevicheria/productos-dialog/productos-dialog.component';
+import {Categoria, CategoriasService} from '@services/categorias.service';
 import {Producto, ProductosService} from '@services/productos.service';
 
 @Component({
@@ -23,9 +24,9 @@ export class ProductosComponent {
     ];
     dataSource = new MatTableDataSource<Producto>([]);
 
+    categoriaOptions: Categoria[] = [];
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     private readonly productoService = inject(ProductosService);
-
     constructor(private dialog: MatDialog) {}
 
     ngOnInit() {
