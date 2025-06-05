@@ -68,6 +68,7 @@ import { ComprasComponent } from './pages/compras/compras.component';
 import { AlmacenComponent } from './pages/almacen/almacen.component';
 import { InsumosComponent } from './pages/insumos/insumos.component';
 import { ProductosComponent } from './pages/productos/productos.component';
+import { ConfirmDialogComponent } from './components/cevicheria/confirm-dialog/confirm-dialog.component';
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
@@ -110,7 +111,8 @@ registerLocaleData(localeEn, 'en-EN');
         ComprasComponent,
         AlmacenComponent,
         InsumosComponent,
-        ProductosComponent
+        ProductosComponent,
+        ConfirmDialogComponent
     ],
     bootstrap: [AppComponent],
     imports: [

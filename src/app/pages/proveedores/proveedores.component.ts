@@ -7,6 +7,10 @@ import {
     ProveedorDialogData
 } from '@components/cevicheria/proveedor-dialog/proveedor-dialog.component';
 import {Proveedor, ProveedoresService} from '@services/proveedores.service';
+import {
+    ConfirmDialogComponent,
+    ConfirmDialogData
+} from '@components/cevicheria/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector: 'app-proveedores',
@@ -75,10 +79,22 @@ export class ProveedoresComponent implements AfterViewInit {
     }
 
     deleteProveedor(proveedor: Proveedor) {
-        this.proveedorService.delete(proveedor.id).subscribe(() => {
-            this.dataSource.data = this.dataSource.data.filter(
-                (p) => p.id !== proveedor.id
-            );
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            width: '400px',
+            data: {
+                title: '¿Confirmar eliminación?',
+                message: `¿Estás seguro de eliminar al proveedor "${proveedor.nombre}"?`
+            } as ConfirmDialogData
+        });
+
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+                this.proveedorService.delete(proveedor.id).subscribe(() => {
+                    this.dataSource.data = this.dataSource.data.filter(
+                        (p) => p.id !== proveedor.id
+                    );
+                });
+            }
         });
     }
 }
