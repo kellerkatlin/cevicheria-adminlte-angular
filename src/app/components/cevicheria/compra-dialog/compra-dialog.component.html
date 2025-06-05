@@ -7,17 +7,27 @@
 
     <mat-form-field appearance="outline" class="w-100">
         <mat-label>Cantidad</mat-label>
-        <input matInput type="number" [(ngModel)]="data.cantidad" />
+        <input
+            matInput
+            type="number"
+            [(ngModel)]="data.cantidad"
+            (ngModelChange)="recalcularMontoTotal()"
+        />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100">
         <mat-label>Precio Unitario</mat-label>
-        <input matInput type="number" [(ngModel)]="data.precioUnitario" />
+        <input
+            matInput
+            type="number"
+            [(ngModel)]="data.precioUnitario"
+            (ngModelChange)="recalcularMontoTotal()"
+        />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100">
         <mat-label>Monto Total</mat-label>
-        <input matInput type="number" [(ngModel)]="data.montoTotal" />
+        <input matInput type="number" [value]="data.montoTotal" disabled />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100">

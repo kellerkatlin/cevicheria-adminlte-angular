@@ -27,6 +27,12 @@ export class CompraDialogComponent implements OnInit {
         });
     }
 
+    recalcularMontoTotal() {
+        const cantidad = this.data.cantidad ?? 0;
+        const precio = this.data.precioUnitario ?? 0;
+        this.data.montoTotal = cantidad * precio;
+    }
+
     onProductoChange(id: number) {
         this.data.producto = {id};
     }
