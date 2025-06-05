@@ -37,18 +37,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         return this.canActivate(next, state);
     }
 
-    async getProfile() {
-        // if (this.appService.user) {
-        //     return true;
-        // }
+    async getProfile(): Promise<boolean | UrlTree> {
+        const token = localStorage.getItem('token-adminlte');
 
-        try {
-            console.log(
-                'AuthGuard: User not authenticated, redirecting to login'
-            );
+        if (token) {
             return true;
-        } catch (error) {
-            return false;
         }
+
+        console.warn('AuthGuard: No token, redirecting to /login');
+        return this.router.createUrlTree(['/login']);
     }
 }

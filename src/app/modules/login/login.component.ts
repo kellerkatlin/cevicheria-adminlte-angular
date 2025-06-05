@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     @HostBinding('class') class = 'login-box';
 
     public loginForm: FormGroup;
+    public loginError: string | null = null;
 
     constructor(
         private renderer: Renderer2,
@@ -44,12 +45,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     submit() {
         if (this.loginForm.valid) {
             const {email, password} = this.loginForm.value;
+            localStorage.setItem('token-adminlte', 'fake-jwt-token'); // Simulación de token
             if (email === 'admin@admin.com' && password === 'admin123') {
                 this.router.navigate(['/']);
-                // Aquí puedes redirigir o mostrar mensaje de éxito
             } else {
                 console.log('Credenciales incorrectas');
-                // Aquí puedes mostrar un mensaje de error en la UI
+                this.loginError = 'Credenciales inválidas';
             }
         }
     }

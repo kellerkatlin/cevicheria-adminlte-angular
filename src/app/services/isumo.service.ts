@@ -6,7 +6,7 @@ export interface Insumo {
     id?: number;
     cantidadUsada: number;
     fechaUsada: string;
-    producto: {id: number};
+    producto: {id: number; nombre?: string};
 }
 
 @Injectable({

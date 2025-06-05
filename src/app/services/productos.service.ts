@@ -6,7 +6,7 @@ export interface Producto {
     id?: number;
     nombre: string;
     unidadMedida: string;
-    categoria: {id: number};
+    categoria: {id: number; nombre?: string};
 }
 
 @Injectable({

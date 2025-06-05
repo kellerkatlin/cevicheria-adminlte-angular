@@ -26,37 +26,17 @@
 
             <p>
                 {{ user?.email }}
-                <small>
-                    <span>Member since </span>
-
-                    <span *ngIf="user?.metadata?.creationTime">
-                        {{ formatDate(user?.metadata?.creationTime) }}
-                    </span>
-                </small>
             </p>
         </li>
         <!-- Menu Body -->
-        <li class="user-body">
-            <div class="row">
-                <div class="col-4 text-center">
-                    <a [routerLink]="['/']">Followers</a>
-                </div>
-                <div class="col-4 text-center">
-                    <a [routerLink]="['/']">Sales</a>
-                </div>
-                <div class="col-4 text-center">
-                    <a [routerLink]="['/']">Friends</a>
-                </div>
-            </div>
-            <!-- /.row -->
-        </li>
+
         <!-- Menu Footer-->
         <li class="user-footer">
             <a [routerLink]="['/profile']" class="btn btn-default btn-flat">
-                Profile
+                Perfil
             </a>
             <a (click)="logout()" class="btn btn-default btn-flat float-right">
-                Sign out
+                Cerrar sesión
             </a>
         </li>
     </div>

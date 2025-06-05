@@ -13,16 +13,18 @@ export class UserComponent implements OnInit {
 
     ngOnInit(): void {
         this.user = {
-            name: 'John Doe',
-            email: 'john.doe@example.com',
+            name: 'Admin',
+            email: 'admin@admin.com',
             metadata: {
-                creationTime: '2022-01-01T00:00:00Z'
+                creationTime: '2022-01-01T00:00:00Z',
+                currentTime: DateTime.now().toISO()
             }
         };
     }
 
     logout() {
-        console.log('Logout action triggered');
+        localStorage.removeItem('token-adminlte');
+        window.location.href = '/login';
     }
 
     formatDate(date) {

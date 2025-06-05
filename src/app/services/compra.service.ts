@@ -10,9 +10,9 @@ export interface Compra {
     precioUnitario: number;
     producto: {
         id: number;
-        nombre: string;
-        unidadMedida: string;
-        categoria: {
+        nombre?: string;
+        unidadMedida?: string;
+        categoria?: {
             id: number;
             nombre: string;
         };
@@ -20,8 +20,8 @@ export interface Compra {
 
     proveedor: {
         id: number;
-        razonSocial: string;
-        nombre: string;
+        razonSocial?: string;
+        nombre?: string;
     };
 }
 

@@ -58,15 +58,16 @@ export const MENU = [
         iconClasses: 'fas fa-shopping-cart',
         path: ['/compras']
     },
-    {
-        name: 'Almacen',
-        iconClasses: 'fas fa-warehouse',
-        path: ['/almacen']
-    },
+
     {
         name: 'Insumos',
         iconClasses: 'fas fa-boxes',
         path: ['/insumos']
+    },
+    {
+        name: 'Almacen',
+        iconClasses: 'fas fa-warehouse',
+        path: ['/almacen']
     }
     // {
     //     name: 'Main Menu',

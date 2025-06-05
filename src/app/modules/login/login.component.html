@@ -51,6 +51,9 @@
             >
                 La contraseña es obligatoria.
             </div>
+            <div *ngIf="loginError" class="text-danger mb-2">
+                {{ loginError }}
+            </div>
 
             <div class="row">
                 <div class="col-12">
