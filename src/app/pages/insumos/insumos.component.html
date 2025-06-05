@@ -1,1 +1,63 @@
-<p>insumos works!</p>
+<div class="card">
+    <div class="d-flex justify-content-between align-items-center px-4 pt-3">
+        <h3 class="card-title mb-0">Insumos</h3>
+        <button mat-raised-button color="primary" (click)="openCreateDialog()">
+            <mat-icon class="me-1">add</mat-icon>
+            Registrar
+        </button>
+    </div>
+
+    <div class="card-body p-3">
+        <table
+            mat-table
+            [dataSource]="dataSource"
+            class="mat-elevation-z8 w-100"
+        >
+            <ng-container matColumnDef="fechaUsada">
+                <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                <td mat-cell *matCellDef="let el">{{ el.fechaUsada }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="cantidadUsada">
+                <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+                <td mat-cell *matCellDef="let el">{{ el.cantidadUsada }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="producto">
+                <th mat-header-cell *matHeaderCellDef>Producto</th>
+                <td mat-cell *matCellDef="let el">{{ el.producto?.id }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let el">
+                    <button
+                        mat-icon-button
+                        color="accent"
+                        (click)="openEditDialog(el)"
+                    >
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button
+                        mat-icon-button
+                        color="warn"
+                        (click)="deleteInsumo(el)"
+                    >
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <mat-paginator
+            [pageSize]="5"
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+        ></mat-paginator>
+    </div>
+</div>
