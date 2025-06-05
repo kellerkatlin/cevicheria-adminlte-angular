@@ -59,6 +59,9 @@ export class ProductosComponent {
                             nuevoProducto
                         ];
                     });
+                this.productoService.getAll().subscribe((productos) => {
+                    this.dataSource.data = productos;
+                });
             }
         });
     }
