@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{ data.id ? 'Editar' : 'Crear' }} Categoría</h1>
+<div style="padding-top: 16px" mat-dialog-content>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="data.nombre" />
+    </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-flat-button color="primary" (click)="save()">Guardar</button>
+</div>

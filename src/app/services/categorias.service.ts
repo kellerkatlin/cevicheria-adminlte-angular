@@ -5,7 +5,6 @@ import {Observable} from 'rxjs';
 export interface Categoria {
     id?: number;
     nombre: string;
-    // Agrega más campos según tu modelo
 }
 
 @Injectable({

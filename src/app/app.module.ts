@@ -69,6 +69,8 @@ import { AlmacenComponent } from './pages/almacen/almacen.component';
 import { InsumosComponent } from './pages/insumos/insumos.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { ConfirmDialogComponent } from './components/cevicheria/confirm-dialog/confirm-dialog.component';
+import { CategoriaDialogComponent } from './components/cevicheria/categoria-dialog/categoria-dialog.component';
+import { ProductosDialogComponent } from './components/cevicheria/productos-dialog/productos-dialog.component';
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
@@ -112,7 +114,9 @@ registerLocaleData(localeEn, 'en-EN');
         AlmacenComponent,
         InsumosComponent,
         ProductosComponent,
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        CategoriaDialogComponent,
+        ProductosDialogComponent
     ],
     bootstrap: [AppComponent],
     imports: [
