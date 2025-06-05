@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>{{ data.id ? 'Editar' : 'Registrar' }} Compra</h1>
+<div style="padding-top: 16px" mat-dialog-content>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Fecha de Compra</mat-label>
+        <input matInput type="date" [(ngModel)]="data.fechaCompra" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Cantidad</mat-label>
+        <input matInput type="number" [(ngModel)]="data.cantidad" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Precio Unitario</mat-label>
+        <input matInput type="number" [(ngModel)]="data.precioUnitario" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Monto Total</mat-label>
+        <input matInput type="number" [(ngModel)]="data.montoTotal" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>ID Producto</mat-label>
+        <input matInput type="number" [(ngModel)]="data.producto.id" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>ID Proveedor</mat-label>
+        <input matInput type="number" [(ngModel)]="data.proveedor.id" />
+    </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-flat-button color="primary" (click)="save()">Guardar</button>
+</div>

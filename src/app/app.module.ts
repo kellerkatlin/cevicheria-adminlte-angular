@@ -71,6 +71,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { ConfirmDialogComponent } from './components/cevicheria/confirm-dialog/confirm-dialog.component';
 import { CategoriaDialogComponent } from './components/cevicheria/categoria-dialog/categoria-dialog.component';
 import { ProductosDialogComponent } from './components/cevicheria/productos-dialog/productos-dialog.component';
+import { CompraDialogComponent } from './components/cevicheria/compra-dialog/compra-dialog.component';
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
@@ -116,7 +117,8 @@ registerLocaleData(localeEn, 'en-EN');
         ProductosComponent,
         ConfirmDialogComponent,
         CategoriaDialogComponent,
-        ProductosDialogComponent
+        ProductosDialogComponent,
+        CompraDialogComponent
     ],
     bootstrap: [AppComponent],
     imports: [
