@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AppService} from '@services/app.service';
 import {DateTime} from 'luxon';
 
 @Component({
@@ -10,14 +9,20 @@ import {DateTime} from 'luxon';
 export class UserComponent implements OnInit {
     public user;
 
-    constructor(private appService: AppService) {}
+    constructor() {}
 
     ngOnInit(): void {
-        this.user = this.appService.user;
+        this.user = {
+            name: 'John Doe',
+            email: 'john.doe@example.com',
+            metadata: {
+                creationTime: '2022-01-01T00:00:00Z'
+            }
+        };
     }
 
     logout() {
-        this.appService.logout();
+        console.log('Logout action triggered');
     }
 
     formatDate(date) {

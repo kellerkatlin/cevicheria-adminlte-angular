@@ -5,9 +5,8 @@ import {
     Renderer2,
     HostBinding
 } from '@angular/core';
-import {UntypedFormGroup, UntypedFormControl, Validators} from '@angular/forms';
-import {ToastrService} from 'ngx-toastr';
-import {AppService} from '@services/app.service';
+import {Validators, FormGroup, FormControl} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -16,15 +15,12 @@ import {AppService} from '@services/app.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
     @HostBinding('class') class = 'login-box';
-    public loginForm: UntypedFormGroup;
-    public isAuthLoading = false;
-    public isGoogleLoading = false;
-    public isFacebookLoading = false;
+
+    public loginForm: FormGroup;
 
     constructor(
         private renderer: Renderer2,
-        private toastr: ToastrService,
-        private appService: AppService
+        private router: Router
     ) {}
 
     ngOnInit() {
@@ -32,30 +28,10 @@ export class LoginComponent implements OnInit, OnDestroy {
             document.querySelector('app-root'),
             'login-page'
         );
-        this.loginForm = new UntypedFormGroup({
-            email: new UntypedFormControl(null, Validators.required),
-            password: new UntypedFormControl(null, Validators.required)
+        this.loginForm = new FormGroup({
+            email: new FormControl('', [Validators.required, Validators.email]),
+            password: new FormControl('', [Validators.required])
         });
-    }
-
-    async loginByAuth() {
-        if (this.loginForm.valid) {
-            this.isAuthLoading = true;
-            await this.appService.loginWithEmail(
-                this.loginForm.value.email,
-                this.loginForm.value.password
-            );
-
-            this.isAuthLoading = false;
-        } else {
-            this.toastr.error('Form is not valid!');
-        }
-    }
-
-    async loginByGoogle() {
-        this.isGoogleLoading = true;
-        await this.appService.signInByGoogle();
-        this.isGoogleLoading = false;
     }
 
     ngOnDestroy() {
@@ -63,5 +39,18 @@ export class LoginComponent implements OnInit, OnDestroy {
             document.querySelector('app-root'),
             'login-page'
         );
+    }
+
+    submit() {
+        if (this.loginForm.valid) {
+            const {email, password} = this.loginForm.value;
+            if (email === 'admin@admin.com' && password === 'admin123') {
+                this.router.navigate(['/']);
+                // Aquí puedes redirigir o mostrar mensaje de éxito
+            } else {
+                console.log('Credenciales incorrectas');
+                // Aquí puedes mostrar un mensaje de error en la UI
+            }
+        }
     }
 }

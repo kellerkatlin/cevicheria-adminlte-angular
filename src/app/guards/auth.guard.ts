@@ -8,16 +8,12 @@ import {
     Router
 } from '@angular/router';
 import {Observable} from 'rxjs';
-import {AppService} from '@services/app.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-    constructor(
-        private router: Router,
-        private appService: AppService
-    ) {}
+    constructor(private router: Router) {}
 
     canActivate(
         next: ActivatedRouteSnapshot,
@@ -42,12 +38,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     }
 
     async getProfile() {
-        if (this.appService.user) {
-            return true;
-        }
+        // if (this.appService.user) {
+        //     return true;
+        // }
 
         try {
-            await this.appService.getProfile();
+            console.log(
+                'AuthGuard: User not authenticated, redirecting to login'
+            );
             return true;
         } catch (error) {
             return false;

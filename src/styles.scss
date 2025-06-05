@@ -38,3 +38,21 @@ body {
 .nav-sidebar .menu-open > .nav-link svg.right {
     transform: none;
 }
+
+.firebase-emulator-warning {
+    display: none !important;
+}
+
+// .cdk-overlay-container {
+//    z-index: 1000 !important;
+//      position: fixed !important;
+// }
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

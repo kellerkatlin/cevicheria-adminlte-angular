@@ -3,6 +3,7 @@ import {ToggleSidebarMenu} from '@/store/ui/actions';
 import {UiState} from '@/store/ui/state';
 import {
     AfterViewInit,
+    ChangeDetectorRef,
     Component,
     HostBinding,
     OnInit,
@@ -23,9 +24,9 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     constructor(
         private renderer: Renderer2,
-        private store: Store<AppState>
+        private store: Store<AppState>,
+        private cd: ChangeDetectorRef
     ) {}
-
     ngOnInit() {
         this.ui = this.store.select('ui');
         this.renderer.removeClass(
@@ -96,5 +97,6 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         this.appLoaded = true;
+        this.cd.detectChanges();
     }
 }

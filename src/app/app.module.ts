@@ -10,9 +10,8 @@ import {HeaderComponent} from '@modules/main/header/header.component';
 import {FooterComponent} from '@modules/main/footer/footer.component';
 import {MenuSidebarComponent} from '@modules/main/menu-sidebar/menu-sidebar.component';
 import {BlankComponent} from '@pages/blank/blank.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProfileComponent} from '@pages/profile/profile.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RegisterComponent} from '@modules/register/register.component';
 import {DashboardComponent} from '@pages/dashboard/dashboard.component';
 import {ToastrModule} from 'ngx-toastr';
@@ -46,7 +45,24 @@ import {ContentHeaderComponent} from './components/content-header/content-header
 import {LoadingComponent} from './components/loading/loading.component';
 import {OverlayLoadingComponent} from './components/overlay-loading/overlay-loading.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ProveedorDialogComponent} from '@components/cevicheria/proveedor-dialog/proveedor-dialog.component';
+import {ProveedoresComponent} from '@pages/proveedores/proveedores.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogModule,
+    MatDialogTitle
+} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
@@ -55,9 +71,12 @@ registerLocaleData(localeEn, 'en-EN');
         MainComponent,
         LoginComponent,
         HeaderComponent,
+        ProveedoresComponent,
+        ProveedorDialogComponent,
         FooterComponent,
         MenuSidebarComponent,
         BlankComponent,
+
         ProfileComponent,
         RegisterComponent,
         DashboardComponent,
@@ -80,12 +99,37 @@ registerLocaleData(localeEn, 'en-EN');
         SmallBoxComponent,
         ContentHeaderComponent,
         LoadingComponent,
-        OverlayLoadingComponent
+        OverlayLoadingComponent,
+        ProveedorDialogComponent
     ],
     bootstrap: [AppComponent],
     imports: [
         ProfabricComponentsModule,
-        CommonModule,
+
+        FormsModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatFormFieldModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatInputModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        MatDialogClose,
+        FormsModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDialogModule,
+        MatIconModule,
+        MatButtonModule,
         BrowserModule,
         StoreModule.forRoot({auth: authReducer, ui: uiReducer}),
         AppRoutingModule,
@@ -99,6 +143,9 @@ registerLocaleData(localeEn, 'en-EN');
         NgxGoogleAnalyticsModule.forRoot(environment.GA_ID),
         FontAwesomeModule
     ],
-    providers: [provideHttpClient(withInterceptorsFromDi())]
+    providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideAnimationsAsync()
+    ]
 })
 export class AppModule {}

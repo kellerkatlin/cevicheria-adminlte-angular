@@ -20,7 +20,9 @@
         style="justify-content: start; align-items: center"
     >
         <pf-image
-            [src]="user.photoURL"
+            [src]="
+                'https://static.vecteezy.com/system/resources/previews/048/216/761/non_2x/modern-male-avatar-with-black-hair-and-hoodie-illustration-free-png.png'
+            "
             fallbackSrc="assets/img/default-profile.png"
             style="margin-left: 12px"
             alt="User Image"
@@ -29,9 +31,7 @@
             rounded="true"
         />
         <div class="info">
-            <a [routerLink]="['/profile']" class="d-block">
-                {{ user.email }}
-            </a>
+            <a [routerLink]="['/profile']" class="d-block"> Brayan </a>
         </div>
     </div>
 

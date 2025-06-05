@@ -14,11 +14,4 @@ import {
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
-    faBookmark = faBookmark;
-    faEnvelope = faEnvelope;
-    faChartSimple = faChartSimple;
-    faCartShopping = faCartShopping;
-    faUserPlus = faUserPlus;
-    faChartPie = faChartPie;
-}
+export class DashboardComponent {}

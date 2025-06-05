@@ -39,9 +39,9 @@ export const MENU = [
         path: ['/']
     },
     {
-        name: 'Blank',
-        iconClasses: 'fas fa-file',
-        path: ['/blank']
+        name: 'Proveedores',
+        iconClasses: 'fas fa-building',
+        path: ['/proveedores']
     },
     {
         name: 'Main Menu',

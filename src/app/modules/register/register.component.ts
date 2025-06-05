@@ -24,8 +24,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     constructor(
         private renderer: Renderer2,
-        private toastr: ToastrService,
-        private appService: AppService
+        private toastr: ToastrService
     ) {}
 
     ngOnInit() {
@@ -41,22 +40,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     async registerByAuth() {
-        if (this.registerForm.valid) {
-            this.isAuthLoading = true;
-            await this.appService.registerWithEmail(
-                this.registerForm.value.email,
-                this.registerForm.value.password
-            );
-            this.isAuthLoading = false;
-        } else {
-            this.toastr.error('Form is not valid!');
-        }
+        console.log('registerByAuth');
     }
 
     async registerByGoogle() {
-        this.isGoogleLoading = true;
-        await this.appService.signInByGoogle();
-        this.isGoogleLoading = false;
+      console.log('registerByGoogle');
     }
 
     ngOnDestroy() {
