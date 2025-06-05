@@ -76,19 +76,11 @@ export class ProductosComponent {
             if (result) {
                 this.productoService
                     .update(producto.id, result)
-                    .subscribe((actualizado) => {
-                        const index = this.dataSource.data.findIndex(
-                            (p) => p === producto
-                        );
-                        if (index !== -1) {
-                            const updatedData = [...this.dataSource.data];
-                            updatedData[index] = actualizado;
-                            this.dataSource.data = updatedData;
-                        }
+                    .subscribe(() => {
+                        this.productoService.getAll().subscribe((productos) => {
+                            this.dataSource.data = productos;
+                        });
                     });
-                this.productoService.getAll().subscribe((productos) => {
-                    this.dataSource.data = productos;
-                });
             }
         });
     }
